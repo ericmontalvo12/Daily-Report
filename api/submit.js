@@ -2,11 +2,7 @@ const formidable = require('formidable');
 const nodemailer = require('nodemailer');
 const fs = require('fs');
 
-module.exports.config = {
-  api: { bodyParser: false },
-};
-
-module.exports = async function handler(req, res) {
+async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -159,3 +155,6 @@ function buildEmailHtml({ workerName, jobSite, reportDate, startTime, endTime, t
   </table>
 </body></html>`;
 }
+
+handler.config = { api: { bodyParser: false } };
+module.exports = handler;
