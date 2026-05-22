@@ -214,7 +214,7 @@
       btn.innerHTML = '<span class="spinner"></span> Sending…';
 
       try {
-        const res = await fetch('/submit', { method: 'POST', body: formData });
+        const res = await fetch('/api/submit', { method: 'POST', body: formData });
         const data = await res.json();
         if (!res.ok) throw new Error(data.error || 'Something went wrong.');
         document.getElementById('reportForm').classList.add('hidden');
